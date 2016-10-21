@@ -31,7 +31,7 @@ rj = qi(7+(1:3));
 pj = qi(7+(4:7)); pjd = qdi(11:14);
 ej = pj(2:4);
 ejTIL = [ 0 -ej(3) ej(2); ej(3) 0 -ej(1); -ej(2) ej(1) 0];
-Aj = (pj(1).^2-(ej')*ei)*eye(3)+2*ej*(ei')+2*pj(1)*ejTIL;
+Aj = (pj(1).^2-(ej')*ej)*eye(3)+2*ej*(ej')+2*pj(1)*ejTIL;
 sQjBAR = constraint.sQjBAR';
 
 %% Initialize outputs to empty, in case they will not be calculated.
@@ -61,7 +61,6 @@ end
 if flags(2)
     B_pi_sPi = getB(pi,sPiBAR);
     B_pj_sQj = getB(pj,sQjBAR);
-    %ADD A CHECK FOR GROUND HERE? 
     Phi_q = [-c', -c'*B_pi_sPi, c', c'*B_pj_sQj];
     
 end
@@ -81,7 +80,7 @@ end
         e0 = p(1);
         aTIL = [ 0 -a(3) a(2); a(3) 0 -a(1); -a(2) a(1) 0];
         eTIL = [ 0 -e(3) e(2); e(3) 0 -e(1); -e(2) e(1) 0];
-        B = [2*((e0.^2)*eye(3)+eTIL)*a, ...
+        B = [2*(e0*eye(3)+eTIL)*a, ...
             2*(e*a'-(e0*eye(3)+eTIL)*aTIL)];
     end
 end
