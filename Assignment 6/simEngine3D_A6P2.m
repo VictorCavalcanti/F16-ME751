@@ -1,6 +1,8 @@
 function [engine] = simEngine3D_A6P2(file)
 %Assignment 6-3 - simEngine3D-A6P3
-% [engine] = simEngine3D_A6P2('revJoint')
+%%
+%RUN LINE:     [engine] = simEngine3D_A6P2('revJoint');
+%%
 acf = strcat(file,'.acf');
 mdl = strcat(file,'.mdl');
 engine = simEngine3D(acf,mdl);
@@ -9,7 +11,10 @@ engine = simEngine3D(acf,mdl);
 % engine.myVelocity = zeros(14,1);
 engine.myPosition(1:7,1) = engine.myBodies(1).q0;
 engine = engine.getPhiJac(1);
-
+disp('Phi');
+disp(engine.myPhi);
+disp('Jac');
+disp(engine.myJac);
 
 % engine = engine.PositionAnalysis();
 

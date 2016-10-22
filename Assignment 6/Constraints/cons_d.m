@@ -1,4 +1,4 @@
-function [ Phi, Phi_q, Nu, Gamma] = cons_d(constraint, time, qi, qdi, flags)
+function [ Phi, Phi_q, Nu, Gamma] = cons_d(constraint, time,funtimes, qi, qdi, flags)
 %% -------------------------------------------------------------------------
 % INPUTS:
 % -constraint- [struct] Built from "bodies_info.adm".
@@ -35,36 +35,27 @@ Aj = (pj(1).^2-(ej')*ej)*eye(3)+2*ej*(ej')+2*pj(1)*ejTIL;
 sQjBAR = constraint.sQjBAR';
 dij = rj+Aj*sQjBAR-ri-Ai*sPiBAR;
 
+id = constraint.id;
 %% Initialize outputs to empty, in case they will not be calculated.
 Phi = [];
 Phi_q = [];
 Nu = [];
 Gamma = [];
-%% Calculate time derivatives used in this constraint:
-t = sym('t');
-fun_sym = sym(constraint.fun);
-funt = matlabFunction(fun_sym, 'vars', t);
-funDt = matlabFunction(diff(fun_sym), 'vars', t);
-funDDt = matlabFunction(diff(diff(fun_sym)),'vars',t);
-
 
 %% Calculate Phi - [scalar]
 if flags(1)
-    Phi = dij'*dij - funt(time);
+    Phi = dij'*dij - funtimes.funt(id,time);
 end
 %% Calculate Jacobian of Phi-[1x14 vector]
 if flags(2)
     B_pi_spi = getB(pi,sPiBAR);
     B_pj_sqj = getB(pj,sQjBAR);
-    
-    %ADD A CHECK FOR GROUND HERE? 
     Phi_q = [-2*dij', -2*dij'*B_pi_spi, 2*dij', 2*dij'*B_pj_sqj];
-%     Phi_q = [-c', -c'*B_pi_sPi, c', c'*B_pj_sjb];
-    
+ 
 end
 %% Calculate Nu - [Scalar] Found from: Phi_q*qddi = -Phi_t = Nu    
 if flags(3)
-    Nu = funDt(time);
+    Nu = funtimes.funDt(id,time);
 end
 %% Calculate Gamma - [scalar]
 if flags(4)
@@ -72,7 +63,7 @@ if flags(4)
     B_pjd_sqj = getB(pjd,sQjBAR);
     dijd = rjd + B_pj_sqj*pjd - rid - B_pi_spi*pid;
     Gamma = -2*dij'*B_pjd_sqj*pjd + 2*dij'*B_pid_spi*pid - 2*(dijd'*dijd)...
-            +funDDt(time);
+            +funtimes.funDDt(id,time);
 end
 %% Calculate B
     function [B] = getB(p,a)
