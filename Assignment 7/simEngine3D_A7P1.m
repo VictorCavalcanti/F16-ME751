@@ -1,7 +1,7 @@
 function [engine,torque] = simEngine3D_A7P1(file)
 %Assignment 7-1 - simEngine3D-A7P1
 %RUN LINE: 
-%[engine] = simEngine3D_A7P1('revJoint')
+%[engine,torques] = simEngine3D_A7P1('revJoint')
 
 acf = strcat(file,'.acf');
 mdl = strcat(file,'.mdl');
