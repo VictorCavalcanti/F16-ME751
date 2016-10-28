@@ -1,0 +1,6 @@
+{
+"simulation": "Kinematics",
+"tend": 1.0,
+"stepSize": 0.01,
+"outputSteps": 100
+}
