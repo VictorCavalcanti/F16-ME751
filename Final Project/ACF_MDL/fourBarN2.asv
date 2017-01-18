@@ -1,0 +1,461 @@
+{
+    "name": "fourBarN2",
+    "gravity": [0,0, -9.81],
+    "bodies": [
+        {
+            "name": "body_1",
+            "id": 1,
+            "mass": 1.0,
+            "jbar": [0,0.0833,0.0833],
+            "q0": [0, 0.5, 0, 0.7071, 0, 0, 0.7071],
+            "qd0": [0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+            "name": "body_2",
+            "id": 2,
+            "mass": 1.0,
+            "jbar": [0,0.0833,0.0833],
+            "q0": [0.5, 1, 0, 1, 0, 0, 0],
+            "qd0": [0, 1, 0, 0, 0, 0, 0]
+        },
+        {
+            "name": "body_3",
+            "id": 3,
+            "mass": 1.0,
+            "jbar": [0,0.0833,0.0833],
+            "q0": [1, 0.5, 0, 0.7071, 0, 0, 0.7071],
+            "qd0": [0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+            "name": "body_4",
+            "id": 4,
+            "mass": 1.0,
+            "jbar": [0,0.0833,0.0833],
+            "q0": [1.5, 1, 0, 1, 0, 0, 0],
+            "qd0": [0, 0, 0, 0, 0, 0, 0]
+        },
+        {
+            "name": "body_5",
+            "id": 5,
+            "mass": 1.0,
+            "jbar": [0,0.0833,0.0833],
+            "q0": [2, 0.5, 0, 0.7071, 0, 0, 0.7071],
+            "qd0": [0, 0, 0, 0, 0, 0, 0]
+        }
+],
+    "constraints": [
+
+        {
+            "name": "Rev1_CD_x",
+            "id": 1,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 1,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev1_CD_y",
+            "id": 2,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 1,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev1_CD_z",
+            "id": 3,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 1,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev1_DP1_zx'",
+            "id": 4,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [1, 0, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev1_DP1_zy'",
+            "id": 5,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [0, 1, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+
+
+
+
+
+
+
+        {
+            "name": "Rev2_CD_x",
+            "id": 6,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 1,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 2,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev2_CD_y",
+            "id": 7,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 1,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 2,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev2_CD_z",
+            "id": 8,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 1,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 2,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev2_DP1_zx'",
+            "id": 9,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [1, 0, 0],
+            "body2": 2,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev2_DP1_zy'",
+            "id": 10,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [0, 1, 0],
+            "body2": 2,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+
+
+
+
+
+        {
+            "name": "Rev3_CD_x",
+            "id": 11,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 2,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 4,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev3_CD_y",
+            "id": 12,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 2,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 4,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev3_CD_z",
+            "id": 13,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 2,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 4,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev3_DP1_zx'",
+            "id": 14,
+            "type": "cons_dp1",
+            "body1": 2,
+            "aiBAR": [1, 0, 0],
+            "body2": 4,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev3_DP1_zy'",
+            "id": 15,
+            "type": "cons_dp1",
+            "body1": 2,
+            "aiBAR": [0, 1, 0],
+            "body2": 4,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+
+
+
+
+        {
+            "name": "Rev4_CD_x",
+            "id": 16,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 3,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 4,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev4_CD_y",
+            "id": 17,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 3,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 4,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev4_CD_z",
+            "id": 18,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 3,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 4,
+            "sQjBAR": [-0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev4_DP1_zx'",
+            "id": 19,
+            "type": "cons_dp1",
+            "body1": 3,
+            "aiBAR": [1, 0, 0],
+            "body2": 4,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev4_DP1_zy'",
+            "id": 20,
+            "type": "cons_dp1",
+            "body1": 3,
+            "aiBAR": [0, 1, 0],
+            "body2": 4,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+
+
+
+
+
+
+        {
+            "name": "Rev5_CD_x",
+            "id": 21,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 3,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev5_CD_y",
+            "id": 22,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 3,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev5_CD_z",
+            "id": 23,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 3,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev5_DP1_zx'",
+            "id": 24,
+            "type": "cons_dp1",
+            "body1": 3,
+            "aiBAR": [1, 0, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev5_DP1_zy'",
+            "id": 25,
+            "type": "cons_dp1",
+            "body1": 3,
+            "aiBAR": [0, 1, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+
+
+
+
+
+
+        {
+            "name": "Rev6_CD_x",
+            "id": 26,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 4,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 5,
+            "sQjBAR": [0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev6_CD_y",
+            "id": 27,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 4,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 5,
+            "sQjBAR": [0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev6_CD_z",
+            "id": 28,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 4,
+            "sPiBAR": [0.5, 0, 0],
+            "body2": 5,
+            "sQjBAR": [0.5, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev6_DP1_zx'",
+            "id": 29,
+            "type": "cons_dp1",
+            "body1": 4,
+            "aiBAR": [1, 0, 0],
+            "body2": 5,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev6_DP1_zy'",
+            "id": 30,
+            "type": "cons_dp1",
+            "body1": 4,
+            "aiBAR": [0, 1, 0],
+            "body2": 5,
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+
+
+
+
+
+        {
+            "name": "Rev7_CD_x",
+            "id": 31,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 5,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev7_CD_y",
+            "id": 32,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 5,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev7_CD_z",
+            "id": 33,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 5,
+            "sPiBAR": [-0.5, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev7_DP1_zx'",
+            "id": 34,
+            "type": "cons_dp1",
+            "body1": 5,
+            "aiBAR": [1, 0, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev7_DP1_zy'",
+            "id": 35,
+            "type": "cons_dp1",
+            "body1": 5,
+            "aiBAR": [0, 1, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+
+
+
+
+
+
+
+
+    ]
+}

@@ -1,0 +1,73 @@
+{
+    "name": "simplePendulumn",
+    "gravity": [0,-9.81,0],
+    "bodies": [
+        {
+            "name": "body_1",
+            "id": 1,
+            "mass": 1.0,
+            "jbar": [2.5000e-10,2.5000e-10,2.5000e-10],
+            "q0": [-1, 0, 0, 1, 0, 0, 0],
+            "qd0": [0, 0, 0, 0, 0, 0, 0]
+        }
+],
+ "actuators": [
+
+],
+    "constraints": [
+
+        {
+            "name": "Rev1_CD_x",
+            "id": 1,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 1,
+            "sPiBAR": [-1, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev1_CD_y",
+            "id": 2,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 1,
+            "sPiBAR": [-1, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev1_CD_z",
+            "id": 3,
+            "type": "cons_cd",
+            "c": [0, 0, 1],
+            "body1": 1,
+            "sPiBAR": [-1, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev2_DP1_zx'",
+            "id": 4,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [1, 0, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev2_DP1_zy'",
+            "id": 5,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [0, 1, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        }
+    ]
+}

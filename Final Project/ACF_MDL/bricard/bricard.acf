@@ -1,0 +1,8 @@
+{
+"simulation": "Dynamics",
+"NRIT": "Quasi",
+"tend": 600.0,
+"stepSize": 0.2,
+"BDF6ON": "no",
+"outputSteps": 3000
+}

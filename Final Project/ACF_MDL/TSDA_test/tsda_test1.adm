@@ -1,0 +1,74 @@
+{
+    "name": "HangingMassSpringDamper",
+    "gravity": [0,0,-9.81],
+    "bodies": [
+        {
+            "name": "Mass",
+            "id": 1,
+            "mass": 1,
+            "jbar": [1.0000e-16,1.0000e-16,1.0000e-16],
+            "q0": [0, 0, 0.5, 1, 0, 0, 0],
+            "qd0": [0, 0, 0, 0, 0, 0, 0]
+        }
+],
+    "actuators": [
+
+{
+            "name": "TSDA",
+            "id": 1,
+            "type": "TSDA",
+            "c": 1,
+            "k": 100,
+            "l0": 1,
+            "body1": 1,
+            "sPiBAR": [0, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+}
+],
+    "constraints": [
+        {
+            "name": "CD_x",
+            "id": 1,
+            "type": "cons_cd",
+            "c": [1, 0, 0],
+            "body1": 1,
+            "sPiBAR": [0, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "CD_y",
+            "id": 2,
+            "type": "cons_cd",
+            "c": [0, 1, 0],
+            "body1": 1,
+            "sPiBAR": [0, 0, 0],
+            "body2": "ground",
+            "sQjBAR": [0, 0, 0],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "DP1_zx'",
+            "id": 3,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [1, 0, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        },
+        {
+            "name": "Rev1_DP1_zy'",
+            "id": 4,
+            "type": "cons_dp1",
+            "body1": 1,
+            "aiBAR": [0, 1, 0],
+            "body2": "ground",
+            "ajBAR": [0, 0, 1],
+            "fun": "@(t)(0*t)"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+"simulation": "Dynamics",
+"NRIT": "Full",
+"tend": 10.0,
+"stepSize": 0.01,
+"outputSteps": 1000
+}
